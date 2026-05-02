@@ -1,0 +1,25 @@
+======================================================================
+  COMPARATIVE ANALYSIS — RATIONALE
+======================================================================
+
+BEST PERFORMER: k-Nearest Neighbors (kNN) (F1-Score: 0.9892)
+WORST PERFORMER: Support Vector Machine (SVM) (F1-Score: 0.9644)
+
+--- k-Nearest Neighbors (kNN) ---
+  k-Nearest Neighbors is an instance-based learner that classifies based on the majority vote of nearest neighbors in feature space. It works well with small datasets and when decision boundaries are locally defined. Performance depends heavily on the choice of k and the distance metric. kNN is sensitive to irrelevant features and the curse of dimensionality, which is why feature scaling is essential.
+  Accuracy: 0.9881 | F1: 0.9892 | CV: 0.9732 ± 0.0160
+
+--- Neural Network (MLP) ---
+  The Neural Network (MLPClassifier) is a non-linear model capable of learning complex decision boundaries through multiple hidden layers. It typically performs well when features have non-linear relationships with the target. However, it requires more data and is sensitive to hyperparameter choices (learning rate, architecture, regularization). Feature scaling is critical for MLP performance.
+  Accuracy: 0.9821 | F1: 0.9831 | CV: 0.9821 ± 0.0138
+
+--- Naive Bayes (GaussianNB) ---
+  Gaussian Naive Bayes assumes feature independence and Gaussian feature distributions. It is fast and works well even with small datasets. However, its 'naive' independence assumption can hurt performance when features are correlated. If symptoms tend to co-occur, this model may underperform compared to models that capture feature interactions (like SVM with RBF kernel or NN).
+  Accuracy: 0.9762 | F1: 0.9644 | CV: 0.9762 ± 0.0029
+
+--- Support Vector Machine (SVM) ---
+  Support Vector Machine finds the optimal hyperplane that maximally separates classes. With kernel tricks (RBF, polynomial), SVM can handle non-linear decision boundaries effectively. It is robust to overfitting in high-dimensional spaces and works well even with relatively small datasets. The C parameter controls regularization, and proper feature scaling is critical for SVM performance.
+  Accuracy: 0.9762 | F1: 0.9644 | CV: 0.9762 ± 0.0029
+
+CONCLUSION:
+  Based on the comparative analysis, k-Nearest Neighbors (kNN) achieved the highest F1-Score (0.9892), making it the most effective classifier for this animal condition dataset. The F1-Score is the primary evaluation metric as it balances precision and recall, which is crucial in a medical/health-related classification task where both false positives and false negatives carry significant consequences.
